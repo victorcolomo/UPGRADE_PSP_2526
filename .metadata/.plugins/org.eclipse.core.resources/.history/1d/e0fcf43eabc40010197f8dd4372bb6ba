@@ -1,0 +1,28 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+/*
+ * Recibe un texto como argumento
+ * Lo guarda en un fichero de texto
+ */
+public class ProcesoEscritor {
+
+	public static void main(String[] args) {
+
+		// Comprobar que se recibe el argumento
+		if (args.length != 1) {
+			System.out.println("Error no se ha recibido un argumento");
+			System.exit(1);
+		}
+		
+		try {
+			String mensaje = args[0];
+			PrintWriter pw = new PrintWriter(new FileWriter("datosEscritor.txt"));
+			pw.println(mensaje);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

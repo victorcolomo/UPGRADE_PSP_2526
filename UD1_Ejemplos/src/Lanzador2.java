@@ -1,0 +1,38 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+public class Lanzador2 {
+
+	
+	public static void main(String[] args) {
+		
+		ProcessBuilder processBuilder = new ProcessBuilder("java","ProcesoMensaje");
+		
+		processBuilder.directory(new File("bin"));
+		
+		try {
+			Process pMensaje = processBuilder.start();
+			
+			InputStream is = pMensaje.getInputStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			String linea = br.readLine();
+			System.out.println("==== SALIDA ESTANDAR ===");
+			if ( linea  != null) {
+				// lee una linea
+				int valor = Integer.parseInt(linea);
+				System.out.println(valor * 2);
+				
+			}
+			br.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+}

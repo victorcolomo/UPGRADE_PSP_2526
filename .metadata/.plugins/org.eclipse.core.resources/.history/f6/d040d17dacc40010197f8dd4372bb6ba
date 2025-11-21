@@ -1,0 +1,19 @@
+import java.io.IOException;
+
+public class Lanzador {
+
+	public static void main(String[] args) {
+		
+		ProcessBuilder pbEscritor = new ProcessBuilder("java", "ProcesoEscritor","hola mundo");
+		
+		try {
+			Process escritor = pbEscritor.start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+}

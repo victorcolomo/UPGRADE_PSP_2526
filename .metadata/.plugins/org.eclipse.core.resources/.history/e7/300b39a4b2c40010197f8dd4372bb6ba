@@ -1,0 +1,19 @@
+/*
+ * EJERCICIO  5 - Crea un programa Potencia.java que reciba dos argumentos enteros: 
+ * la base y el exponente, que calcule la potencia (base^exponente) 
+ * y muestre el resultado por pantalla
+ * 
+ * 
+ * Crea un programa EjecutorPotencia.java que:
+ * Lance dos procesos hijos de Potencia,
+ * La salida de dos procesos debe ser enviada a los archivos potencia1.txt y potencia2.txt y 
+ * los errores a errorPotencia1.txt, y errorPotencia2.txt
+ */
+public class Ejercicio05 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
