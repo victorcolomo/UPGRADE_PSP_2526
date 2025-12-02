@@ -1,0 +1,38 @@
+package Ejemplo3_Sincronizacion;
+
+public class Principal {
+	
+	private static final int NUM_HILOS = 10;
+	private static final int NUM_REPETICIONES = 1000;
+	
+	public static void main(String[] args) {
+		
+		// Creamos la variable compartida
+		Contador contador = new Contador();
+		Thread[] hilos = new Thread[NUM_HILOS];
+		
+		// Creamos tantos hilos como NUM_HILOS y los guardamos en el vector
+		for(int i=0 ; i < NUM_HILOS; i++) {
+			HiloContador hilo = new HiloContador("Contador"+i, contador, NUM_REPETICIONES);
+			hilo.start();
+			hilos[i] = hilo;
+		}
+		
+		// Sobre el vector de hilos, por cada hilo hago un join
+		for(Thread h : hilos) {
+			try {
+				h.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		// Mostramos la cuenta final
+		System.out.println("Cuenta global: "+contador.getCuenta());
+		
+		
+		
+	}
+
+}
