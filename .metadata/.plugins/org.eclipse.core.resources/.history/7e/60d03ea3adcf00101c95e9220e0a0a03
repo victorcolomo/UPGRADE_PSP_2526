@@ -1,0 +1,51 @@
+package ejercicio4;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+public class HiloTortuga extends Thread {
+
+	private int casillaFin;
+	private int casillaActual;
+
+	public HiloTortuga(int casillaFin) {
+		this.casillaActual = 1;
+		this.casillaFin = casillaFin;
+	}
+
+	@Override
+	public void run() {
+
+		
+
+		do {
+			
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			// Numero aleatorio entre 0 y 100
+			int aleatorio = ThreadLocalRandom.current().nextInt(0, 101);
+
+			if (aleatorio <= 50) {
+				casillaActual += 3;
+				System.out.println("TORTUGA - Avance rápido: " + casillaActual);
+			} else if (aleatorio <= 70) {
+				casillaActual -= 3;
+				if (casillaActual < 1) {
+					casillaActual = 1;
+				}
+				System.out.println("TORTUGA - Resbaló: " + casillaActual);
+			} else {
+				casillaActual += 1;
+				System.out.println("TORTUGA - Avance lento: " + casillaActual);
+			}
+		} while (casillaActual < casillaFin);
+
+		System.out.println("TORTUGA HA FINALIZADO CARRERA");
+
+	}
+
+}

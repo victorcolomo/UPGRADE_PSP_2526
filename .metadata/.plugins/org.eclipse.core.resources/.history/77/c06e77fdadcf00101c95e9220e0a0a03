@@ -1,0 +1,16 @@
+package ejercicio4;
+
+public class Carrera {
+
+	public static void main(String[] args) {
+
+		int casillaFinal = 20;
+		
+		HiloTortuga t = new HiloTortuga(casillaFinal);
+		t.start();
+		HiloLiebre l = new HiloLiebre(casillaFinal);
+		
+
+	}
+
+}

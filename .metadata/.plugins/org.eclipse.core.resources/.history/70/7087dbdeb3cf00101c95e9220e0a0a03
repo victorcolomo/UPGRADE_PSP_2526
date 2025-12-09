@@ -1,0 +1,24 @@
+package Ejemplo4_Productor_Consumidor;
+
+public class Principal {
+	
+	public static void main(String[] args) {
+		
+		
+		BufferFrases frases = new BufferFrases();
+		
+		Consumidor c1 = new Consumidor("C1", frases);
+		c1.start();
+		Consumidor c2 = new Consumidor("C1", frases);
+		c2.start();
+		Consumidor c3 = new Consumidor("C1", frases);
+		c3.start();
+		
+		Productor p1 = new Productor("P1", frases, "hola mundo!!!");
+		p1.start();
+		Productor p2 = new Productor("P1", frases, "hoy es martes!!");
+		p2.start();
+		Productor p3 = new Productor("P1", frases, "Quedan 10 minutos");
+		p3.start();
+	}
+}

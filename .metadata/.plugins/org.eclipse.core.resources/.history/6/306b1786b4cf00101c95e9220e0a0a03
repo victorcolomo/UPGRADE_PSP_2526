@@ -1,0 +1,22 @@
+package Ejemplo4_Productor_Consumidor;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class BufferFrases {
+
+	private Queue<String> cola = new LinkedList<String>();
+	
+	// Metodo para el hilo productor: recibe un texto y lo añade a la cola
+	public void poner(String frase) {
+		cola.add(frase);
+	}
+	
+	// Metodo para el hilo consumidor: saca una frase de la cola
+	public String sacar() {
+		String frase = cola.remove();
+		return frase;
+	}
+	
+	
+}

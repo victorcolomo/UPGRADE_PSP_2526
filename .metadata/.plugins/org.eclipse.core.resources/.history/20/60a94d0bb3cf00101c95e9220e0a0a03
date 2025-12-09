@@ -1,0 +1,7 @@
+package Ejemplo4_Productor_Consumidor;
+
+public class Productor extends Thread {
+
+	
+	
+}

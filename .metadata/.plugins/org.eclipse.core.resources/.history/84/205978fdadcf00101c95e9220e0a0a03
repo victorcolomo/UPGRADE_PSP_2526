@@ -1,0 +1,56 @@
+package ejercicio4;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+public class HiloLiebre implements Runnable {
+
+	private int casillaFin;
+	private int casillaActual;
+	private Thread hilo;
+	
+	public HiloLiebre(int casillaFin) {
+		this.casillaFin = casillaFin;
+		this.casillaActual = 1;
+		hilo = new Thread(this);
+		hilo.start();
+	}
+	
+	
+	@Override
+	public void run() {
+	do {
+			
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			// Numero aleatorio entre 0 y 100
+			int aleatorio = ThreadLocalRandom.current().nextInt(0, 101);
+
+			if (aleatorio <= 40) {
+				System.out.println("LIEBRE - Se ha dormido...: " + casillaActual);
+			} else if (aleatorio <= 60) {
+				casillaActual += 9;
+				System.out.println("LIEBRE - Avance rápido: " + casillaActual);
+			} else if(aleatorio <= 80){
+				casillaActual -= 8;
+				if (casillaActual < 1) {
+					casillaActual = 1;
+				}
+				System.out.println("LIEBRE - Resbaló: " + casillaActual);
+			}else {
+				casillaActual += 3;
+				System.out.println("LIEBRE - Avance lento: " + casillaActual);
+			}
+		} while (casillaActual < casillaFin);
+
+		System.out.println("LIEBRE HA FINALIZADO CARRERA");
+
+		
+	}
+	
+	
+}

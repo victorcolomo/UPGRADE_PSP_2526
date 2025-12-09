@@ -8,4 +8,27 @@
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
     <fullyQualifiedTypeName name="java.lang.ProcessBuilder"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="Ejemplo1_Thread.HiloCorredor"/>
+    <fullyQualifiedTypeName name="Ejemplo2_Runnable.HiloCorredor"/>
+    <fullyQualifiedTypeName name="ejercicio2.HiloFibonacci"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.ThreadLocalRandom"/>
+    <fullyQualifiedTypeName name="ejercicio4.HiloTortuga"/>
+    <fullyQualifiedTypeName name="java.lang.Runnable"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
+    <fullyQualifiedTypeName name="ejercicio4.HiloLiebre"/>
+    <fullyQualifiedTypeName name="Ejemplo3_Sincronizacion.Contador"/>
+    <fullyQualifiedTypeName name="Ejemplo3_Sincronizacion.HiloContador"/>
+    <fullyQualifiedTypeName name="Ejemplo4_Productor_Consumidor.BufferFrases"/>
+    <fullyQualifiedTypeName name="Ejemplo4_Productor_Consumidor.Consumidor"/>
+    <fullyQualifiedTypeName name="Ejemplo4_Productor_Consumidor.Productor"/>
+    <fullyQualifiedTypeName name="ejercicio1.Colecta"/>
+    <fullyQualifiedTypeName name="ejercicio1.HiloColecta"/>
+    <fullyQualifiedTypeName name="ejercicio1.HiloPrueba"/>
+    <fullyQualifiedTypeName name="ejercicio2.HiloConsumidor"/>
+    <fullyQualifiedTypeName name="ejercicio2.Colecta"/>
+    <fullyQualifiedTypeName name="ejercicio2.HiloRecolector"/>
+    <fullyQualifiedTypeName name="java.util.Queue"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
 </qualifiedTypeNameHistroy>

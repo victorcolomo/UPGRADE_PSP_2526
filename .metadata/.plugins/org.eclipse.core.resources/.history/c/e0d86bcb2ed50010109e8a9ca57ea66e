@@ -1,0 +1,23 @@
+package ejercicio1;
+
+public class HiloColecta extends Thread{
+	
+	// Atributo el objeto compartido por todos los hilos
+	private Colecta colecta;
+	
+	public HiloColecta(String nombre, Colecta colecta) {
+		super(nombre);
+		this.colecta = colecta;
+	}
+	
+	@Override
+	public void run() {
+		
+		// Bucle hasta que se llegue a la cantidad maxima
+		while() {
+			
+		}
+		
+	}
+
+}

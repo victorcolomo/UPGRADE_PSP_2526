@@ -1,0 +1,8 @@
+package Ejemplo4_Productor_Consumidor;
+
+public class Productor extends Thread {
+
+	private BufferFrases frases;
+	private String frase;
+	
+}

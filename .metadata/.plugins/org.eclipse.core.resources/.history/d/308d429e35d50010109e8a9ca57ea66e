@@ -1,0 +1,20 @@
+package ejercicio2;
+
+public class PrincipalColecta {
+
+	private static final int NUM_HILOS = 2;
+	
+	public static void main(String[] args) {
+		
+		Colecta colecta = new Colecta(2000);
+		
+		for(int i = 1 ; i <= NUM_HILOS ; i++) {
+			HiloConsumidor hC = new HiloConsumidor("Consumidor_"+i, colecta);
+			HiloRecolector hR = new HiloRecolector("Recolector_"+i, colecta);
+			hC.start();
+			hR.start();
+		}
+		
+	}
+	
+}

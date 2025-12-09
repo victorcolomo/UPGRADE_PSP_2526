@@ -1,0 +1,16 @@
+package Ejemplo3_Sincronizacion;
+
+public class Contador {
+
+	private int cuenta = 0;
+	
+	public int getCuenta() {
+		return cuenta;
+	}
+	
+	public int incrementar() {
+		this.cuenta++;
+		return cuenta;
+	}
+	
+}

@@ -1,0 +1,22 @@
+package ejercicio4;
+
+public class Carrera {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		int casillaFinal = 20;
+		
+		HiloTortuga t = new HiloTortuga(casillaFinal);
+		t.start();
+		HiloLiebre l = new HiloLiebre(casillaFinal);
+		
+		t.join();
+		l.join();
+		
+		System.out.println("HA TERMINADO LA CARRERA");
+		
+		
+
+	}
+
+}

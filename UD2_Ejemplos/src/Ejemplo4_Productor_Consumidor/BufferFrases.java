@@ -9,6 +9,15 @@ public class BufferFrases {
 	
 	// Metodo para el hilo productor: recibe un texto y lo añade a la cola
 	public synchronized void poner(String frase) {
+		// Capacidad maxima 2
+		while(cola.size() >= 2) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		cola.add(frase);
 		// Los productos después de añadir un frase a la cola, usan notify / notifyAll
 		// para "activar" a los consumidor que esten a la espera (wait)
@@ -28,6 +37,9 @@ public class BufferFrases {
 			}
 		}
 		String frase = cola.remove();
+		
+		// "Despertamos" a los hilos productos por si estan en wait por superar la capacidad máxima
+		notifyAll();
 		return frase;
 	}
 	
