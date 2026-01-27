@@ -1,8 +1,7 @@
+package ejemploTCPHilos;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -39,7 +38,6 @@ public class Cliente {
 			System.out.println("5 - Mayores de edad");
 			System.out.println("6 - Salir");
 			opcion = Integer.parseInt(scan.nextLine());
-			
 			
 			switch(opcion) {
 				case 1:
@@ -106,7 +104,6 @@ public class Cliente {
 			
 			} while(opcion != 6);
 			
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

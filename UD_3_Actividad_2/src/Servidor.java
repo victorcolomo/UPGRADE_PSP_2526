@@ -18,7 +18,6 @@ public class Servidor {
 	}
 
 	private synchronized static Persona getPersona(int id) {
-		
 		for(Persona p : personas) {
 			if(p.getId() == id) {
 				return p;
@@ -26,6 +25,23 @@ public class Servidor {
 		}
 		return null;
 	}
+	
+	
+	private synchronized static boolean eliminarPersona(int id) {
+		return personas.removeIf(p -> p.getId() == id);	
+	}
+	
+	private synchronized static ArrayList<Persona> mayoresEdad() {
+		ArrayList<Persona> mayores = new ArrayList<Persona>();
+		
+		for(Persona p : personas) {
+			if(p.getEdad() >= 18) {
+				mayores.add(p);
+			}
+		}
+		return mayores;
+	}
+	
 
 	public static void main(String[] args) {
 		cargaInicial();
@@ -44,23 +60,48 @@ public class Servidor {
 			Socket socketCliente = servidor.accept();
 			System.out.println("CLIENTE CONECTADO.....");
 			
-			InputStream entrada = socketCliente.getInputStream();
-			
+			ObjectInputStream inOb = new ObjectInputStream(socketCliente.getInputStream());
 			ObjectOutputStream outOb = new ObjectOutputStream(socketCliente.getOutputStream());
 
-			byte mensaje[] = new byte[100];
-			entrada.read(mensaje);
+			while(true) {
+				// La peticion la recibimos en formato text
+				String peticion = (String) inOb.readObject();
+				String partes[] = peticion.split(",");
+				
+				System.out.println("[PETICION]"+partes[0]);
+					
+				if ( partes[0].equalsIgnoreCase("BUSCAR")) {  // BUSCAR,id
+					int id = Integer.parseInt(partes[1]);
+					outOb.writeObject(getPersona(id));
+				} else if (partes[0].equalsIgnoreCase("MOSTRAR_TODOS")) { // MOSTRAR_TODOS
+					outOb.writeObject(new ArrayList<>(personas));
+				} else if(partes[0].equalsIgnoreCase("ADD")) { // ADD, nombre, apellido,edad
+					String nombre = partes[1];
+					String apellidos = partes[2];
+					int edad = Integer.parseInt(partes[3]);
+					personas.add(new Persona(nombre, apellidos, edad));
+					outOb.writeObject("Persona añadida correctamente");
+				}else if(partes[0].equalsIgnoreCase("ELIMINAR")) {
+					int idEliminar = Integer.parseInt(partes[1]);
+					System.out.println("[ELIMINAR]"+idEliminar);
+					if(eliminarPersona(idEliminar)) {
+						outOb.writeObject("Persona eliminada correctamente");
+					}else {
+						outOb.writeObject("Persona con id "+idEliminar+" no existe");
+					}
+				} else if(partes[0].equalsIgnoreCase("MAYORES_EDAD")) {
+					outOb.writeObject(mayoresEdad());
+				}else if(partes[0].equalsIgnoreCase("SALIR")) {
+					break;
+				}
 			
-			String textoId = new String(mensaje).trim();
-			int id = Integer.parseInt(textoId);
-			
-			Persona persona = getPersona(id);
-			
-			outOb.writeObject(persona);
-			
+			}
 			
 		
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
