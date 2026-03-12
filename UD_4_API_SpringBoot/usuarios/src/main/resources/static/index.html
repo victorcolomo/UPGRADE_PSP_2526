@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    
+    <h1>GESTIÓN DE USUARIOS</h1>
+
+    <!-- Formulario para crear usuarios -->
+     <div>
+        <h2>Nuevo Usuario</h2>
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="text" id="apellido" placeholder="Apellido">
+        <input type="email" id="email" placeholder="email">
+        <button onclick="saveUser()">Guardar</button>
+        <button onclick="clearForm()">Limpiar</button>
+     </div>
+
+    <!-- Tabla para mostrar los usuarios -->
+    <h2>Listado de usuarios</h2> 
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="usersTable">
+
+        </tbody>
+    </table>
+
+    <script src="usuarios.js"></script>
+</body>
+</html>

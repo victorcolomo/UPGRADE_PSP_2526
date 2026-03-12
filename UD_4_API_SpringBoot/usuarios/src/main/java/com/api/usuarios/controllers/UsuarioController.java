@@ -33,4 +33,20 @@ public class UsuarioController {
         return "Eliminado "+id;
     }
 
+    @PostMapping
+    public UsuarioModel saveUser(@RequestBody UsuarioModel user){
+        return usuarioRepository.save(user);
+    }
+
+    @PutMapping(path = "/{id}")
+    public UsuarioModel updateUser(@RequestBody UsuarioModel usuarioModificado, @PathVariable("id") Long id){
+
+        UsuarioModel usuario = usuarioRepository.findById(id).get();
+        usuario.setNombre(usuarioModificado.getNombre());
+        usuario.setApellido(usuarioModificado.getApellido());
+        usuario.setEmail(usuarioModificado.getEmail());
+        return usuarioRepository.save(usuario);
+
+    }
+
 }
